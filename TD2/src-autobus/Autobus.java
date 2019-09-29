@@ -10,57 +10,80 @@ public class Autobus implements Vehicule {
 	num_arret = 0;
 	passagers = new Passager[nbPlaceDebout+nbPlaceAssise];
     }
-    /*
-    private void ajouter_passager(Passager p) {
-	int  i = 0;
-	for (; this.passagers[i] == null; i++) {
-	    if (i==(passagers.length-1))
-		break;
+
+    
+    private int chercherEmplacementVide() {
+        for (int i = 0; i < passagers.length-1; i++) {
+	    if (passagers[i] == null)
+		return i;
 	}
-	passagers[i] = p;
+	return -1;
+    }
+
+    private int chercherPassager(Passager p) {
+	for (int i = 0; i < passagers.length-1; i++) {
+	    if ( passagers[i] == p)
+		return i;
+	}
+	return -1;
+    }
+
+    /* public void allerArretSuivant() {
+	num_arret++;
+	for (int i = 0; i < passagers.length; i++) {
+	    if (passagers[i] != null) {
+		passagers[i].
+	    }
+	}
 	}*/
 
-    private int chercherEmplacementVide() {	
-	for (int i=0;i<passagers.length; i++) {
-	    if (passagers[i]==null)
-		return i;	    
-	}
-    }
-
-    public void allerArretSuivant() {
-
-    }
-
     public boolean aPlaceAssise() {
-	return this.assis.estVert();
+	return assis.estVert();
     }
     
     public boolean aPlaceDebout() {
-	return this.debouts.estVert();
+	return debouts.estVert();
     }
     
     public void arretDemanderAssis(Passager p) {
-
+	if (this.aPlaceAssise()) {
+	    p.changerEnAssis();
+	    assis.incrementer();
+	    debouts.decrementer();
+	}	   
     }
 
     public void arretDemanderDebout(Passager p) {
-
+	if (this.aPlaceDebout()) {
+	    p.changerEnDebout();
+	    debouts.incrementer();
+	    assis.decrementer();
+	}
+	   
     }
 
     public void arretDemanderSortie(Passager p) {
+	if (p.estAssis())
+	    assis.decrementer();
+	else
+	    debouts.decrementer();
 
+	p.changerEnDehors();
     }
 
     public void monteeDemanderAssis(Passager p) {
-	ajouter_passager(p);
 	if (this.aPlaceAssise()) {
-	    this.assis.incrementer();
 	    p.changerEnAssis();
+	    assis.incrementer();
 	}
+	    
     }
 
     public void monteeDemanderDebout(Passager p) {
-
+	if (this.aPlaceDebout()) {
+	    p.changerEnDebout();
+	    debouts.incrementer();
+	}
     }
 
     public java.lang.String toString() {
