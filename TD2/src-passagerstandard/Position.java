@@ -58,7 +58,7 @@ class Position {
    * @return vrai si l'état de l'instance est debout;
    */
   public boolean estDebout() {
-    return courant == ASSIS;
+    return courant == DEBOUT;
   }
 
   /**
@@ -95,7 +95,7 @@ class Position {
    * @return instance dans l'état dehors.
    */
   public Position dehors() {
-    return new Position(DEBOUT);
+    return new Position(DEHORS);
   }
 
   /**

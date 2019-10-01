@@ -1,4 +1,3 @@
-
 class TestPassagerStandard {
 
   public static void main (String[] args) {
@@ -60,6 +59,7 @@ class TestPassagerStandard {
     assert true == p.estDehors();
 
     p.changerEnAssis();
+
     assert true == p.estAssis();
     assert false == p.estDebout();
     assert false == p.estDehors();
