@@ -1,3 +1,4 @@
+package tec;
 
 /**
  * Cette classe représente la position d'un passager par rapport à un transport.
@@ -11,36 +12,22 @@
  **/
 class Position {
 
-  private final int DEHORS = 1;
-  private final int ASSIS  = 2;
-  private final int DEBOUT = 3;
 
-  private final int courant;
+    static final private Position DEHORS = new Position();
+    static final private Position ASSIS = new Position();
+    static final private Position DEBOUT = new Position();
 
-  /**
-   * construit une l'instance dans la position dehors.
-   * 
-   */
-  public Position() {
-    courant = DEHORS;
-  }
-  
-  /**
-   * Construit une instance en précisant une des positions du passager.
-   * 
-   * @param e valeur d'une des positions.
-   */
-  private Position(int e) {
-    courant = e;
-  }
 
+
+
+ 
   /**
    * La position est-elle dehors ?
    *
    * @return vrai si l'état de l'instance est dehors;
    */
   public boolean estDehors() {
-    return courant == DEHORS;
+    return this == DEHORS;
   }
 
   /**
@@ -49,7 +36,7 @@ class Position {
    * @return vrai si l'état de l'instance est assis;
    */
   public boolean estAssis() {
-    return courant == ASSIS;
+    return this == ASSIS;
   }
 
   /**
@@ -67,7 +54,7 @@ class Position {
    * @return vrai la position est assis ou debout.
    */
   public boolean estInterieur() {
-    return courant != DEHORS;
+    return this != DEHORS;
   }
 
 
@@ -77,7 +64,7 @@ class Position {
    * @return instance dans l'état assis.
    */
   public Position assis() {
-    return new Position(ASSIS); 
+    return ASSIS; 
   }
 
   /**
@@ -86,7 +73,7 @@ class Position {
    * @return instance dans l'état debout.
    */
   public Position debout() {
-    return new Position(DEBOUT);
+    return DEBOUT;
   }
 
   /**
@@ -95,7 +82,7 @@ class Position {
    * @return instance dans l'état dehors.
    */
   public Position dehors() {
-    return new Position(DEHORS);
+    return DEHORS;
   }
 
   /**
@@ -107,7 +94,7 @@ class Position {
   @Override
   public String toString() {
     String nom = null;
-    switch(courant) {
+    switch(this) {
     case DEHORS :
       nom = "endehors";
       break;

@@ -1,6 +1,6 @@
+package tec;
 
 public class PassagerStandard
-extends java.lang.Object
 implements Passager {
     
     final private String nom;
@@ -32,7 +32,7 @@ implements Passager {
     }
 
     public void changerEnDehors() {
-	position = position.dehors();
+	position = DEHORS;
 
     }
 
@@ -42,7 +42,7 @@ implements Passager {
     }
 
     public void changerEnDebout() {
-	position = position.debout();
+	position = position.DEBOUT;
 
     }
 
