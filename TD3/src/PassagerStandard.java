@@ -5,14 +5,13 @@ implements Passager {
     
     final private String nom;
     final private int destination;
-    private Position position;    
+    private Position position;
+    
     
     public PassagerStandard (java.lang.String nom, int destination) {
 	this.nom = nom;
 	this.destination = destination;
-	this.position = new Position(); // dehors
-
-	
+	this.position = position.DEHORS; // dehors	
     }
 
     public java.lang.String nom() {
@@ -32,7 +31,7 @@ implements Passager {
     }
 
     public void changerEnDehors() {
-	position = DEHORS;
+	position = position.dehors();
 
     }
 
@@ -42,7 +41,7 @@ implements Passager {
     }
 
     public void changerEnDebout() {
-	position = position.DEBOUT;
+	position = position.debout();
 
     }
 

@@ -1,3 +1,5 @@
+package tec;
+
 public class Autobus implements Vehicule {
     private Passager passagers [];
     private Jauge assis;

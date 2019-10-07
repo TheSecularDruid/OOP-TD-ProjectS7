@@ -1,3 +1,6 @@
+import tec.*;
+
+
 class TestPassagerStandard {
 
   public static void main (String[] args) {

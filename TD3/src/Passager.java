@@ -1,3 +1,4 @@
+package tec;
 
 /**
  * Cette interface fixe/définit/spécifie les services d'un passager

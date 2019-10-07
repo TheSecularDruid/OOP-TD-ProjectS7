@@ -1,17 +1,5 @@
+import tec.*;
 
-/**
- * Classe faussaire pour le test unitaire fonctionnel
- * de PassagerStandard
- *
- * Ce faussaire ne declenche pas d'appel aux methodes
- * de PassagerStandard.
- *
- * Il ne change pas son etat (la variable d'instance status). 
- * C'est le test qui change directement la valeur de cette variable. 
- *
- * Il enregistre l'appel aux méthodes qui
- * doivent modifier son etat.
- */
 class FauxVehicule implements Vehicule {
   static final byte VIDE = 0;
   static final byte DEBOUT  = 1;

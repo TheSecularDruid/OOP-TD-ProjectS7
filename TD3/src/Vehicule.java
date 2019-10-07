@@ -1,4 +1,4 @@
-
+package tec;
 /**
  * Cette interface fixe/définit/spécifie les services d'un véhicule
  * qui accepte des passsagers (sous-types de l'interface Passager). 

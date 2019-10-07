@@ -1,3 +1,6 @@
+import tec.*;
+
+
 class TestJauge {
 
     private int nb_of_tests;

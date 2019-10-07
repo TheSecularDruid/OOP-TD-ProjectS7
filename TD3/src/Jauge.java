@@ -1,24 +1,6 @@
+package tec;
 
-/**
- * Réalisation d'une jauge sur un intervalle d'entiers.
- * <p>
- * Une instance de Jauge définit une position par rapport à un intervalle 
- * de référence [0, max[. 
- *
- * La position d'une jauge n'est pas limité aux valeurs dans l'intervalle.
- * <p>
- * L'état d'une jauge correspond à sa position par rapport à l'intervalle
- * de référence [0, max[.
- * Une jauge définit deux états : 
- * <ul>
- * <li>rouge position de la jauge supérieure à l'intervalle,
- * <li>vert position de la jauge dans l'intervalle, 
- * </ul>
- * 
- * @author georgy
- * @since 2006-2019
- */
-class Jauge { 
+public class Jauge { 
   private int valeur;
   private final int MAX;
 

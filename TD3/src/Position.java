@@ -1,26 +1,17 @@
 package tec;
 
-/**
- * Cette classe représente la position d'un passager par rapport à un transport.
- * Une position a trois états possibles : assis dans un transport, 
- * debout dans un transport et dehors d'un transport.
- *
- * Les instances de cette classe sont des objets constants.
- *
- * @author Georgy
- * @since 2007-2019
- **/
-class Position {
+public class Position {
 
-
-    static final private Position DEHORS = new Position();
-    static final private Position ASSIS = new Position();
-    static final private Position DEBOUT = new Position();
+    static public final Position DEHORS = new Position();
+    static public final Position ASSIS  = new Position();
+    static public final Position DEBOUT = new Position();
 
 
 
-
- 
+    private Position() {
+	
+    }
+    
   /**
    * La position est-elle dehors ?
    *
@@ -45,7 +36,7 @@ class Position {
    * @return vrai si l'état de l'instance est debout;
    */
   public boolean estDebout() {
-    return courant == DEBOUT;
+    return this == DEBOUT;
   }
 
   /**
@@ -91,20 +82,16 @@ class Position {
    * chaîne de caractères correspondant à l'état d'un objet.
    * Mais, il faut adapter son code à chaque classe.
    */
-  @Override
-  public String toString() {
-    String nom = null;
-    switch(this) {
-    case DEHORS :
-      nom = "endehors";
-      break;
-    case ASSIS :
-      nom = "assis";
-      break;
-    case DEBOUT :
-      nom = "debout";
-      break;
+    @Override
+    public String toString() {
+	String nom = null;
+	if (this.equals(DEHORS)) {
+	    nom = "endehors";
+	} else if (this.equals(ASSIS)) {
+	    nom = "assis";
+	} else if (this.equals(DEBOUT)) {
+	    nom = "debout";
+	}
+	return "<" + nom + ">";
     }
-    return "<" + nom + ">";
-  }
 }
