@@ -1,6 +1,6 @@
 package tec;
 
-public class Autobus implements Vehicule, Transport {
+class Autobus implements Vehicule, Transport {
     private Passager passagers [];
     private Jauge assis;
     private Jauge debouts;

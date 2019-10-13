@@ -31,19 +31,19 @@ interface Vehicule{
    * Indique au véhicule l'arrêt suivant en déclenche sur chaque passager 
    * la méthode arretSuivant().
    */
-  public void allerArretSuivant();
+   void allerArretSuivant();
 
   /**
    *  Y-a-t-il des places assises libres ?
    * @return vrai si nombre max de places assises n'est pas atteinte. 
    */
-  public boolean aPlaceAssise();
+   boolean aPlaceAssise();
 
   /**
    *  Y-a-t-il des places debout libres ?
    * @return vrai si nombre max de places debout n'est pas atteinte. 
    */
-  public boolean aPlaceDebout();
+   boolean aPlaceDebout();
 
   /**
    * Le passager entre dans le véhicule en demandant une place assise.
@@ -51,7 +51,7 @@ interface Vehicule{
    * Cette méthode est appelée par un passager.
    * @param p le passager qui demande à montée.
    */
-  public void monteeDemanderAssis(Passager p);
+   void monteeDemanderAssis(Passager p);
 
   /**
    * Le passager entre dans le véhicule en demandant une place debout.
@@ -59,26 +59,26 @@ interface Vehicule{
    * Cette méthode est appelée par un passager.
    * @param p le passager qui demande à montée.
    */
-  public void monteeDemanderDebout(Passager p);
+   void monteeDemanderDebout(Passager p);
 
   /**
    * Change un passager d'une place assise vers une place debout
    * pour un passager déjà dans le véhicule.
    * @param p le passager avec une position assis dans le véhicule.
    */
-  public void arretDemanderDebout(Passager p);
+   void arretDemanderDebout(Passager p);
 
   /**
    * Change un passager d'une place debout vers une place assise
    * pour un passager déjà dans le véhicule.
    * @param p le passager avec une position debout dans le véhicule.
    */
-  public void arretDemanderAssis(Passager p);
+   void arretDemanderAssis(Passager p);
 
   /**
    * Fait sortir un passager du véhicule.
    * @param p le passager avec une position soit assise soit debout 
    *          dans le véhicule. 
    */
-  public void arretDemanderSortie(Passager p);
+   void arretDemanderSortie(Passager p);
 }

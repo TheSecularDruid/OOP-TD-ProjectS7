@@ -1,7 +1,6 @@
 import tec.Transport;
-import tec.Autobus;
 import tec.Usager;
-import tec.PassagerStandard;
+import tec.FabriqueTec;
 
 class Simple {
 
@@ -18,11 +17,11 @@ class Simple {
   }
 
   static public void main (String[] args) {
-    Transport serenity = new Autobus(1, 2);
+    Transport serenity = FabriqueTec.faireAutobus(1, 2);
 
-    Usager kaylee = new PassagerStandard("Kaylee", 4);
-    Usager jayne = new PassagerStandard("Jayne", 4);
-    Usager inara = new PassagerStandard("Inara", 5);
+    Usager kaylee = FabriqueTec.fairePassagerStandard("Kaylee", 4);
+    Usager jayne = FabriqueTec.fairePassagerStandard("Jayne", 4);
+    Usager inara = FabriqueTec.fairePassagerStandard("Inara", 5);
 
     //0
     System.out.println(serenity);

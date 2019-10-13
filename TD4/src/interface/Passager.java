@@ -35,42 +35,42 @@ interface Passager {
   /**
    * fournit le nom de du passager.
    */
-  public String nom();
+   String nom();
   /**
    * Le passager est-il en dehors d'un véhicule ?
    * @return vrai si la position du passager est dehors.
    */
-  public boolean estDehors();
+   boolean estDehors();
   
   /**
    * Le passager est-il assis dans un véhicule ?
    * @return vrai si la position du passager est assis.
    */
-  public boolean estAssis();
+   boolean estAssis();
   
   /**
    * Le passager est-il debout dans un véhicule?
    * @return vrai si la position du passager est debout.
    */
-  public boolean estDebout();
+   boolean estDebout();
   
   /**
    * Change la position du passager en dehors.
    * Cette méthode est appélee par un véhicule.
    */
-  public void changerEnDehors();
+   void changerEnDehors();
   
   /**
    * Change la position du passager en assis. 
    * Cette méthode est appélee par un véhicule.
    */
-  public void changerEnAssis();
+   void changerEnAssis();
   
   /**
    * Change la position du passager en debout.
    * Cette méthode est appélee par un véhicule.
    */
-  public void changerEnDebout();
+   void changerEnDebout();
 
 
   /**
@@ -80,6 +80,6 @@ interface Passager {
    * @param v le vehicule dans lequel se trouve le passager.
    * @param numeroArret numéro de l'arrêt courant.
    */
-  public void nouvelArret(Transport t, int numeroArret);
+     void nouvelArret(Transport t, int numeroArret);
 }
 

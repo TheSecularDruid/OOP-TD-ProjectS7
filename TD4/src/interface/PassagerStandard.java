@@ -1,6 +1,6 @@
 package tec;
 
-public class PassagerStandard
+class PassagerStandard
     implements Passager, Usager {
     
     final private String nom;
