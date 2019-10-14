@@ -1,7 +1,7 @@
 package tec;
 
 public class PassagerStandard
-    implements Passager, Usager {
+    extends Passager implements Usager {
     
     final private String nom;
     final private int destination;
