@@ -58,7 +58,7 @@ public class PassagerStandard
     }
 		
 
-    public void nouvelArret(Transport t, int numeroArret) {
+    public void nouvelArret(Vehicule t, int numeroArret) {
 	Vehicule b = (Vehicule) t;
 	if (numeroArret == destination) {
 	    b.arretDemanderSortie(this);
