@@ -18,19 +18,19 @@ public class PassagerStandard
 	return this.nom;
     }
 
-    public boolean estDehors() {
+    boolean estDehors() {
 	return (position.estDehors());
     }
 
-    public boolean estAssis() {
+    boolean estAssis() {
 	return (position.estAssis());
     }
 
-    public boolean estDebout() {
+    boolean estDebout() {
 	return (position.estDebout());
     }
 
-    public void changerEnDehors() {
+    void changerEnDehors() {
 	position = position.dehors();
 
     }
@@ -40,7 +40,7 @@ public class PassagerStandard
 
     }
 
-    public void changerEnDebout() {
+    void changerEnDebout() {
 	position = position.debout();
 
     }
@@ -58,7 +58,7 @@ public class PassagerStandard
     }
 		
 
-    public void nouvelArret(Vehicule t, int numeroArret) {
+    void nouvelArret(Vehicule t, int numeroArret) {
 	Vehicule b = (Vehicule) t;
 	if (numeroArret == destination) {
 	    b.arretDemanderSortie(this);

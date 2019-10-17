@@ -39,11 +39,11 @@ public class Autobus extends Vehicule implements Transport {
 	}
     }
     
-    public boolean aPlaceAssise() {
+    boolean aPlaceAssise() {
 	return assis.estVert();
     }
     
-    public boolean aPlaceDebout() {
+    boolean aPlaceDebout() {
 	return debouts.estVert();
     }
     
@@ -55,7 +55,7 @@ public class Autobus extends Vehicule implements Transport {
 	}	   
     }
 
-    public void arretDemanderDebout(Passager p) {
+    void arretDemanderDebout(Passager p) {
 	if (this.aPlaceDebout()) {
 	    p.changerEnDebout();
 	    debouts.incrementer();
@@ -64,7 +64,7 @@ public class Autobus extends Vehicule implements Transport {
 	   
     }
 
-    public void arretDemanderSortie(Passager p) {
+    void arretDemanderSortie(Passager p) {
 	if (p.estAssis())
 	    assis.decrementer();
 	else
@@ -77,7 +77,7 @@ public class Autobus extends Vehicule implements Transport {
 	p.changerEnDehors();	
     }
 
-    public void monteeDemanderAssis(Passager p) {
+    void monteeDemanderAssis(Passager p) {
 	if (this.aPlaceAssise()) {
 	    p.changerEnAssis();
 	    assis.incrementer();
@@ -86,7 +86,7 @@ public class Autobus extends Vehicule implements Transport {
 	    
     }
 
-    public void monteeDemanderDebout(Passager p) {
+    void monteeDemanderDebout(Passager p) {
 	if (this.aPlaceDebout()) {
 	    p.changerEnDebout();
 	    debouts.incrementer();
