@@ -1,7 +1,7 @@
 package tec;
 
-    public class PassagerStandard extends PassagerAbstrait {
-        public PassagerStandard (java.lang.String nom, int destination) {
+    public class PassagerStresse extends PassagerAbstrait {
+        public PassagerStresse (java.lang.String nom, int destination) {
           super(nom, destination);
       }
 
@@ -13,6 +13,8 @@ package tec;
       }
     }
       protected abstract void choixPlaceArret(Vehicule v, int arret) {
+      if (this.estAssis() && this.arretsRestants(arret) <= 3) {
+        v.arretDemanderDebout(this);
       }
   }
 }

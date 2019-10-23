@@ -85,7 +85,7 @@ public class Autobus extends Vehicule implements Transport {
 	}
 	    
     }
-
+    
     void monteeDemanderDebout(Passager p) {
 	if (this.aPlaceDebout()) {
 	    p.changerEnDebout();
