@@ -2,16 +2,18 @@ package tec;
 
 abstract class PassagerAbstrait
     implements Passager, Usager {
-    
+    import ComportementArret;
+
     final protected String nom;
     final protected int destination;
     protected Position position;
+    protected comportement_arret comp_arret;
     
-    
-    public PassagerAbstrait (java.lang.String nom, int destination) {
+    public PassagerAbstrait (java.lang.String nom, int destination, comportement_arret comp_arr) {
 	this.nom = nom;
 	this.destination = destination;
-	this.position = position.DEHORS; // dehors	
+	this.position = position.DEHORS; // dehors
+	this.comp_arret = comp_arr;
     }
 
     public java.lang.String nom() {
@@ -47,18 +49,28 @@ abstract class PassagerAbstrait
 
     abstract protected void choixPlaceMontee(Vehicule v);
 
-    public void monterDans(Transport t) {
+    final public void monterDans(Transport t) {
 	Vehicule b = (Vehicule) t;
 	choixPlaceMontee(b);
-    }
-	
-    abstract protected void choixPlaceArret(Vehicule v, int arret);
+    }	
 
 
-    public void nouvelArret(Transport t, int numeroArret) {
+    final public void nouvelArret(Transport t, int numeroArret) {
 	Vehicule b = (Vehicule) t;
-	choixPlaceArret(b, numeroArret);
-
+	if (numeroArret==destination)
+	    b.arretDemanderSortie(this);
+	switch(this.comp_arret) {
+	case CALME:
+	    ArretCalme.choixPlaceArret(b, numeroArret);
+	case NERVEUX:
+	    ArretNerveux.choixPlaceArret(b, numeroArret);
+	case PRUDENT:
+	    ArretPrudent.choixPlaceArret(b, numeroArret);
+	case AGORAPHOBE:
+	    ArretAgoraphobe.choixPlaceArret(b, numeroArret);
+	case POLI:
+	    ArretPoli.choixPlaceArret(b, numeroArret);
+	}
     }
 
     public java.lang.String toString() {
