@@ -58,12 +58,10 @@ abstract class PassagerAbstrait
       return destination - arret;
     }
 
+    public abstract void choixPlaceMontee(Vehicule v);
 
-
-    protected abstract void choixPlaceMontee(Vehicule v);
-
-    protected abstract void choixPlaceArret(final Passager p, Vehicule v, int arret) {
-	comportementArret.choixPlaceArret(p, v, arretRestants(arret));
+    public void choixPlaceArret(final Passager p, Vehicule v, int arret) {
+	comportementArret.choixPlaceArret(p, v, arretsRestants(arret));
     }
 
     final void nouvelArret(Vehicule v, int numeroArret) {
