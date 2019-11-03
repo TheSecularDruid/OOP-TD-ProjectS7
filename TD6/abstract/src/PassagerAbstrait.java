@@ -1,16 +1,19 @@
+package tec;
 
-public class PassagerAbstrait
+abstract class PassagerAbstrait
     extends Passager implements Usager {
 
     final private String nom;
     final private int destination;
     private Position position;
+    private final ComportementArret comportementArret;
 
 
-    public PassagerAbstrait (java.lang.String nom, int destination) {
+    PassagerAbstrait (java.lang.String nom, int destination) {
 	this.nom = nom;
 	this.destination = destination;
 	this.position = position.DEHORS; // dehors
+	this.comportementArret = comportementArret;
     }
 
     public java.lang.String nom() {
@@ -59,12 +62,14 @@ public class PassagerAbstrait
 
     protected abstract void choixPlaceMontee(Vehicule v);
 
-    protected abstract void choixPlaceArret(Vehicule v, int arret);
+    protected abstract void choixPlaceArret(final Passager p, Vehicule v, int arret) {
+	comportementArret.choixPlaceArret(p, v, arretRestants(arret));
+    }
 
-    void nouvelArret(Vehicule b, int numeroArret) {
-	choixPlaceArret(v, numeroArret);
-	if (numeroArret == destination) {
-	    b.arretDemanderSortie(this);
+    final void nouvelArret(Vehicule v, int numeroArret) {
+	choixPlaceArret(this, v, numeroArret);
+	if (arretsRestants(numeroArret) <= 0) {
+	    v.arretDemanderSortie(this);
 	    changerEnDehors();
 	}
 
