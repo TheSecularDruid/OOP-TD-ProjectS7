@@ -9,7 +9,7 @@ abstract class PassagerAbstrait
     private final ComportementArret comportementArret;
 
 
-    PassagerAbstrait (java.lang.String nom, int destination) {
+    PassagerAbstrait (java.lang.String nom, int destination, ComportementArret comportementArret) {
 	this.nom = nom;
 	this.destination = destination;
 	this.position = position.DEHORS; // dehors

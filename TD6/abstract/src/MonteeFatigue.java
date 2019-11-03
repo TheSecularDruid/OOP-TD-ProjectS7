@@ -2,8 +2,8 @@ package tec;
 
 public class MonteeFatigue extends PassagerAbstrait {
 
-    public MonteeFatigue(java.lang.String nom, int destination) {
-	super(nom, destination);
+    public MonteeFatigue(java.lang.String nom, int destination, ComportementArret comportementArret) {
+	super(nom, destination, comportementArret);
     }
 
     public void choixPlaceMontee(Vehicule v) {

@@ -2,8 +2,8 @@ package tec;
 
 public class MonteeRepos extends PassagerAbstrait {
 
-    public MonteeRepos(java.lang.String nom, int destination) {
-	super(nom, destination);
+    public MonteeRepos(java.lang.String nom, int destination, ComportementArret comportementArret) {
+	super(nom, destination, comportementArret);
     }
     
     public void choixPlaceMontee(Vehicule v) {

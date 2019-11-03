@@ -2,8 +2,8 @@ package tec;
 
 public class MonteeTetu extends PassagerAbstrait {
 
-    public MonteeTetu(java.lang.String nom, int destination) {
-	super(nom, destination);
+    public MonteeTetu(java.lang.String nom, int destination, ComportementArret comportementArret) {
+	super(nom, destination, comportementArret);
     }
 
     public void choixPlaceMontee(Vehicule v) {
