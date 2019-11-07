@@ -48,7 +48,7 @@ class Autobus implements Vehicule, Transport {
     }
     
     public void arretDemanderAssis(Passager p) {
-	if (this.aPlaceAssise()) {
+	if (this.aPlaceAssise()&&p.estDebout()) {
 	    p.changerEnAssis();
 	    assis.incrementer();
 	    debouts.decrementer();
@@ -56,7 +56,7 @@ class Autobus implements Vehicule, Transport {
     }
 
     public void arretDemanderDebout(Passager p) {
-	if (this.aPlaceDebout()) {
+	if (this.aPlaceDebout()&&p.estAssis()) {
 	    p.changerEnDebout();
 	    debouts.incrementer();
 	    assis.decrementer();

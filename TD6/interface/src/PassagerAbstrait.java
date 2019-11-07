@@ -1,15 +1,20 @@
 package tec;
+import tec.ComportementArret;
+import tec.ArretCalme;
+import tec.ArretNerveux;
+import tec.ArretPrudent;
+import tec.ArretAgoraphobe;
+import tec.ArretPoli;
 
 abstract class PassagerAbstrait
     implements Passager, Usager {
-    import ComportementArret;
 
     final protected String nom;
     final protected int destination;
     protected Position position;
-    protected comportement_arret comp_arret;
+    protected ComportementArret comp_arret;
     
-    public PassagerAbstrait (java.lang.String nom, int destination, comportement_arret comp_arr) {
+    public PassagerAbstrait (java.lang.String nom, int destination, ComportementArret comp_arr) {
 	this.nom = nom;
 	this.destination = destination;
 	this.position = position.DEHORS; // dehors
@@ -53,23 +58,23 @@ abstract class PassagerAbstrait
 	Vehicule b = (Vehicule) t;
 	choixPlaceMontee(b);
     }	
-
-
+    
     final public void nouvelArret(Transport t, int numeroArret) {
 	Vehicule b = (Vehicule) t;
 	if (numeroArret==destination)
 	    b.arretDemanderSortie(this);
-	switch(this.comp_arret) {
+	int distanceDest = numeroArret-destination;
+	switch(comp_arret) {
 	case CALME:
-	    ArretCalme.choixPlaceArret(b, numeroArret);
+	    ArretCalme.choixPlaceArret(this, b, numeroArret, distanceDest);
 	case NERVEUX:
-	    ArretNerveux.choixPlaceArret(b, numeroArret);
+	    ArretNerveux.choixPlaceArret(this, b, numeroArret, distanceDest);
 	case PRUDENT:
-	    ArretPrudent.choixPlaceArret(b, numeroArret);
+	    ArretPrudent.choixPlaceArret(this, b, numeroArret, distanceDest);
 	case AGORAPHOBE:
-	    ArretAgoraphobe.choixPlaceArret(b, numeroArret);
+	    ArretAgoraphobe.choixPlaceArret(this, b, numeroArret, distanceDest);
 	case POLI:
-	    ArretPoli.choixPlaceArret(b, numeroArret);
+	    ArretPoli.choixPlaceArret(this, b, numeroArret, distanceDest);
 	}
     }
 
