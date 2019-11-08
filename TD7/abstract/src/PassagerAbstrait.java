@@ -11,7 +11,10 @@ abstract class PassagerAbstrait
 
     PassagerAbstrait (java.lang.String nom, int destination, ComportementArret comportementArret) {
 	this.nom = nom;
-	this.destination = destination;
+	if (destination < 0) 
+	    throw new IllegalArgumentException();
+	else 
+	    this.destination = destination;
 	this.position = position.DEHORS; // dehors
 	this.comportementArret = comportementArret;
     }

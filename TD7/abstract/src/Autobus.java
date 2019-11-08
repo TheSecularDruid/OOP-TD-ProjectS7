@@ -7,10 +7,14 @@ public class Autobus extends Vehicule implements Transport {
     public int num_arret;
 
     public Autobus(int nbPlaceAssise, int nbPlaceDebout) {
-	assis = new Jauge(nbPlaceAssise,0);
+	if (nbPlaceAssise < 0) {
+	    throw new IllegalArgumentException();
+	}else {
+	    assis = new Jauge(nbPlaceAssise,0);
+	    passagers = new Passager[nbPlaceDebout+nbPlaceAssise];
+	}
 	debouts = new Jauge(nbPlaceDebout,0);
 	num_arret = 0;
-	passagers = new Passager[nbPlaceDebout+nbPlaceAssise];
     }
 
     
@@ -60,8 +64,7 @@ public class Autobus extends Vehicule implements Transport {
 	    p.changerEnDebout();
 	    debouts.incrementer();
 	    assis.decrementer();
-	}
-	   
+	}	   
     }
 
     void arretDemanderSortie(Passager p) {
@@ -78,20 +81,29 @@ public class Autobus extends Vehicule implements Transport {
     }
 
     void monteeDemanderAssis(Passager p) {
-	if (this.aPlaceAssise()) {
-	    p.changerEnAssis();
-	    assis.incrementer();
-	    passagers[chercherEmplacementVide()]=p;
+	if (chercherPassager(p) == -1) {
+	    if (this.aPlaceAssise()) {
+		p.changerEnAssis();
+		assis.incrementer();
+		passagers[chercherEmplacementVide()]=p;
+	    }
 	}
-	    
+	else {
+	    throw new IllegalStateException("Passenger already in the bus.");
+	}	    
     }
     
     void monteeDemanderDebout(Passager p) {
-	if (this.aPlaceDebout()) {
-	    p.changerEnDebout();
-	    debouts.incrementer();
-	    passagers[chercherEmplacementVide()]=p;
+	if (chercherPassager(p) == -1) {
+	    if (this.aPlaceDebout()) {
+		p.changerEnDebout();
+		debouts.incrementer();
+		passagers[chercherEmplacementVide()]=p;
+	    }
 	}
+	else {
+	    throw new IllegalStateException("Passenger already in the bus.");
+	}	
     }
     
     public java.lang.String toString() {

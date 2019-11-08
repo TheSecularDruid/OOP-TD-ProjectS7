@@ -1,7 +1,7 @@
 import tec.Transport;
 import tec.Autobus;
 import tec.Usager;
-import tec.PassagerStandard;
+import tec.PassagerAbstrait;
 
 class Simple {
 
@@ -20,7 +20,7 @@ class Simple {
   static public void main (String[] args) {
     Transport serenity = new Autobus(1, 2);
 
-    Usager kaylee = new PassagerStandard("Kaylee", 4);
+    Usager kaylee = new PassagerAbsrtrait("Kaylee", 4);
     Usager jayne = new PassagerStandard("Jayne", 4);
     Usager inara = new PassagerStandard("Inara", 5);
 
