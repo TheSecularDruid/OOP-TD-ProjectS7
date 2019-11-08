@@ -7,6 +7,8 @@ class Autobus implements Vehicule, Transport {
     public int num_arret;
 
     public Autobus(int nbPlaceAssise, int nbPlaceDebout) {
+	if(nbPlaceAssise<0||nbPlaceDebout<0)
+	    throw new IllegalArgumentException("Comment construit-on un Transport avec un nombre négatif de places ? Vous avez 4h :)");
 	assis = new Jauge(nbPlaceAssise,0);
 	debouts = new Jauge(nbPlaceDebout,0);
 	num_arret = 0;
@@ -21,7 +23,7 @@ class Autobus implements Vehicule, Transport {
 	}
        	return -1;
     }
-
+    
     private int chercherPassager(Passager p) {
 	for (int i = 0; i < passagers.length; i++) {
 	    if ( passagers[i] == p)
@@ -29,7 +31,7 @@ class Autobus implements Vehicule, Transport {
 	}
 	return -1;
     }
-
+    
     public void allerArretSuivant() {
 	num_arret++;
 	for (int i = 0; i < passagers.length; i++) {
@@ -78,6 +80,9 @@ class Autobus implements Vehicule, Transport {
     }
 
     public void monteeDemanderAssis(Passager p) {
+	if(this.chercherPassager(p)!=-1)
+	    throw new IllegalStateException("Ce passager est déjà dans le bus :)");
+	
 	if (this.aPlaceAssise()) {
 	    p.changerEnAssis();
 	    assis.incrementer();
@@ -87,6 +92,9 @@ class Autobus implements Vehicule, Transport {
     }
 
     public void monteeDemanderDebout(Passager p) {
+	if(this.chercherPassager(p)!=-1)
+	    throw new IllegalStateException("Ce passager est déjà dans le bus :)");
+
 	if (this.aPlaceDebout()) {
 	    p.changerEnDebout();
 	    debouts.incrementer();

@@ -15,8 +15,12 @@ public class Jauge {
    * @param depart   position de départ de la Jauge.
    */
   public Jauge(int max, int depart) {
-    valeur = depart;
-    MAX = max;
+      if(max<0)
+	  throw new IllegalArgumentException(Integer.toString(max));
+      else {
+	  valeur = depart;
+	  MAX = max;
+      }
   }
 
   /**

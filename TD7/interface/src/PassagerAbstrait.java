@@ -16,6 +16,8 @@ abstract class PassagerAbstrait
     
     public PassagerAbstrait (java.lang.String nom, int destination, ComportementArret comp_arr) {
 	this.nom = nom;
+	if(destination<0)
+	    throw new IllegalArgumentException("Une destination doit être positive :)");
 	this.destination = destination;
 	this.position = position.DEHORS; // dehors
 	this.comp_arret = comp_arr;
