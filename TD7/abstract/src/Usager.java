@@ -9,9 +9,8 @@ public interface Usager{
    *
    * @param v le véhicule dans lequel va monter le passager.
    */
-
-  
-    public void monterDans(Transport t);
+    public void monterDans(Transport t) throws TecException;
+	
 
 
 
