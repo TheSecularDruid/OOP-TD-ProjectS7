@@ -9,11 +9,11 @@ abstract class PassagerAbstrait
     private final ComportementArret comportementArret;
 
 
-    PassagerAbstrait (java.lang.String nom, int destination, ComportementArret comportementArret) {
+    PassagerAbstrait (String nom, int destination, ComportementArret comportementArret) {
 	this.nom = nom;
-	if (destination < 0) 
+	if (destination < 0)
 	    throw new IllegalArgumentException();
-	else 
+	else
 	    this.destination = destination;
 	this.position = position.DEHORS; // dehors
 	this.comportementArret = comportementArret;
@@ -67,7 +67,7 @@ abstract class PassagerAbstrait
 	comportementArret.choixPlaceArret(p, v, arretsRestants(arret));
     }
 
-    final void nouvelArret(Vehicule v, int numeroArret) {
+    public void nouvelArret(Vehicule v, int numeroArret) {
 	choixPlaceArret(this, v, numeroArret);
 	if (arretsRestants(numeroArret) <= 0) {
 	    v.arretDemanderSortie(this);
