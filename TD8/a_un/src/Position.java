@@ -72,7 +72,7 @@ public class Position {
    *
    * @return instance dans l'état dehors.
    */
-  public Position dehors() {
+  public static Position dehors() {
     return DEHORS;
   }
 
