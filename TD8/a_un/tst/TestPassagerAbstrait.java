@@ -1,7 +1,5 @@
 package tec;
 
-import utils.TestUtils;
-
 abstract class TestPassagerAbstrait {
 
 // pour tester Indecis et Stresse au lieu de Standard uniquement

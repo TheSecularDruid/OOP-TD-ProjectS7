@@ -1,101 +1,84 @@
-import tec.*;
+package tec;
 
+public class TestJauge {
 
-class TestJauge {
+    public Jauge maJauge;
 
-    private int nb_of_tests;
-
-    static public void main(String[] argvs) {
-	boolean estMisAssertion = false;
-	assert estMisAssertion = true;
-
-	if (!estMisAssertion) {
-	    System.out.println("Execution impossible sans l'option -ea");
-	    return;
-	}
-
-	TestJauge temp = new TestJauge();
-	temp.testDansIntervalle();
-	temp.testAccompli();
-	temp.testDépartSupMax();
-	temp.testAccompli();
-	temp.testDépartEgalMax();
-	temp.testAccompli();
-	temp.testDépartNégatif();
-	temp.testAccompli();
-	temp.testDépartNul();
-	temp.testAccompli();
-	temp.testDecrementer();
-	temp.testAccompli();
-	temp.testIncrementer();
-	temp.testAccompli();
-	System.out.println("OK," + temp.nb_of_tests + " tests passed.");
+    public void testConstrJauge() {
+        maJauge = new Jauge(10, 5);
+        assert maJauge.toString().equals("<5 [0,10[>");
     }
 
-    public TestJauge() {
-	nb_of_tests = 0;
-    }
-    private void testAccompli() {
-	System.out.println(".");
-	nb_of_tests ++;
-    }
+    public void testEstVert() {
+        for (int i = 0; i < 10; i++) {
+            maJauge = new Jauge(10, i);
+            assert (maJauge.estVert()) : "doit etre vert";
+        }
 
-    public void testDansIntervalle() {
-	Jauge jaugeTest = new Jauge(67899,100);
+        maJauge = new Jauge(10, -1);
+        assert (!maJauge.estVert()) : "ne doit pas etre vert";
 
-	assert jaugeTest.estVert() : "Erreur verte";
-	assert !(jaugeTest.estRouge()) : "Erreur rouge";
-    }
+        maJauge = new Jauge(10, 10);
+        assert (!maJauge.estVert()) : "ne doit pas etre vert";
 
-    public void testDépartSupMax() {
-	Jauge jaugeTest = new Jauge(25,42);
+        maJauge = new Jauge(10, -2);
+        assert (!maJauge.estVert()) : "ne doit pas etre vert";
 
-	assert !jaugeTest.estVert() : "Erreur verte";
-	assert jaugeTest.estRouge() : "Erreur rouge";
+        maJauge = new Jauge(10, 11);
+        assert (!maJauge.estVert()) : "ne doit pas etre vert";
     }
 
-    public void testDépartEgalMax() {
-	Jauge jaugeTest = new Jauge(42,42);
+    public void testEstRouge() {
+        for (int i = 0; i < 10; i++) {
+            maJauge = new Jauge(10, i);
+            assert (!maJauge.estRouge()) : "ne doit pas etre rouge";
+        }
 
-	assert !jaugeTest.estVert() : "Erreur verte";
-	assert jaugeTest.estRouge() : "Erreur rouge";
-    }
+        maJauge = new Jauge(10, -1);
+        assert (!maJauge.estRouge()) : "ne doit pas etre rouge";
 
-    public void testDépartNégatif() {
-	Jauge jaugeTest = new Jauge(4,-24);
+        maJauge = new Jauge(10, 10);
+        assert (maJauge.estRouge()) : "doit etre rouge";
 
-	assert !jaugeTest.estVert() : "Erreur verte";
-	assert !jaugeTest.estRouge() : "Erreur rouge";
-    }
+        maJauge = new Jauge(10, -2);
+        assert (!maJauge.estRouge()) : "ne doit pas etre rouge";
 
-    public void testDépartNul() {
-	Jauge jaugeTest = new Jauge(54,0);
-
-	assert jaugeTest.estVert() : "Erreur verte";
-	assert !jaugeTest.estRouge() : "Erreur rouge";
-    }
-
-    public void testDecrementer() {
-	Jauge jaugeTest = new Jauge(42,42);
-	jaugeTest.decrementer();
-
-	assert !jaugeTest.estRouge() : "Erreur dans decrementer()";
+        maJauge = new Jauge(10, 11);
+        assert (maJauge.estRouge()) : "doit etre rouge";
     }
 
     public void testIncrementer() {
-	Jauge jaugeTest = new Jauge(64,64);
-	jaugeTest.incrementer();
+        maJauge = new Jauge(5, 2);
+        for (int i = 2; i < 4; i++) {
+            maJauge.incrementer();
+            assert (maJauge.estVert()) : "doit etre vert";
+        }
+        maJauge.incrementer();
+        assert (!maJauge.estVert()) : "ne doit pas etre vert";
+    }
 
-	assert jaugeTest.estRouge() : "Erreur dans incrementer()";
+
+    public void testDecrementer() {
+        maJauge = new Jauge(5, 5);
+        for (int i = 0; i < 4; i++) {
+            maJauge.decrementer();
+            assert (!maJauge.estRouge()) : "ne doit pas etre rouge";
+        }
+
+        maJauge.decrementer();
+        assert (!maJauge.estRouge()) : "ne doit pas etre rouge";
     }
 
     public void testCasLimite() {
-   try{Jauge inverse = null;
+        try {
+            Jauge inverse = null;
 
-   inverse = new Jauge(-42, 10);  // teste si exception levée et si oui, s'arrête là et "sort"
-   assert false: "Exception non levee";
+            inverse = new Jauge(-10, 5);
+            assert false : "Exception non levée";
+        } catch (IllegalArgumentException e) {
 
- } catch(IllegalArgumentException e)
-   //Que comportement faut-il vérifier ?
- }
+        }
+
+    }
+
 }

@@ -1,44 +1,15 @@
 package tec;
 
-import utils.TestUtils;
-
 class TestPassagerStresse extends TestPassagerAbstrait {
 
-  public static void main (String[] args) {
-      TestUtils.checkAssertionOption();
-      int nbTest = 0;
-
-      // test instanciation
-      nbTest++;
-      new TestPassagerStresse().testInstanciation();
-
-      // test changement d'etat
-      nbTest++;
-      new TestPassagerStresse().testGestionEtat();
-
-      // test montee d'un TestPassagerIndecis
-      nbTest++;
-      new TestPassagerStresse().testalaMontee();
-
-      // test changement de place a chaque arret
-      nbTest++;
-      new TestPassagerStresse().testalArret();
-
-      TestUtils.printTestsFinishedMessage(nbTest, "tec.TestPassagerStresse");
-  }
-
     public PassagerAbstrait creerPassager(String nom, int destination) {
-        ArretPrudent ArretPrudent = new ArretPrudent();
-        Montee Fatigue p = new(nom, destination, arretPrudent);
-        PassagerAbstrait pa = (PassagerAbstrait) );
+        ArretPrudent arretPrudent = new ArretPrudent();
+        MonteeFatigue p = new MonteeFatigue(nom, destination, arretPrudent);
+        PassagerAbstrait pa = (PassagerAbstrait) p;
         return pa;
     }
 
-
-    /* A la montee  d'un PassagerStresse :
-     *  - le PassagerStresse monte si il y a une place debout ou assise, sinon il reste dehors.
-     */
-    protected void testalaMontee() {
+    public void testalaMontee() {
         PassagerAbstrait p = creerPassager("M.Presse", 5);
 
         FauxVehicule faux = new FauxVehicule(FauxVehicule.VIDE);
@@ -47,7 +18,11 @@ class TestPassagerStresse extends TestPassagerAbstrait {
 
         faux = new FauxVehicule(FauxVehicule.DEBOUT);
         p.monterDans(faux);
-        assert "monteeDemanderDebout".equals(getLastLog(faux)) : "debout";
+        assert 0 == faux.logs.size() : "dehors";
+
+        faux = new FauxVehicule(FauxVehicule.ASSIS);
+        p.monterDans(faux);
+        assert "monteeDemanderAssis".equals(getLastLog(faux)) : "dehors";
 
         faux = new FauxVehicule(FauxVehicule.PLEIN);
         p.monterDans(faux);
@@ -55,10 +30,8 @@ class TestPassagerStresse extends TestPassagerAbstrait {
 
     }
 
-    /* A partir de 3 arrets avant sa destination si le Passager
-    n'est pas debout alors il se leve
-     */
-    protected void testalArret() {
+
+    public void testalArret() {
 
         super.testalArret();
 
@@ -69,7 +42,7 @@ class TestPassagerStresse extends TestPassagerAbstrait {
         p.nouvelArret(faux, 1);
         assert !"arretDemanderDebout".equals(getLastLog(faux)) : "ne demande pas debout";
 
-        p.nouvelArret(faux, 2); /*A 3 arret desa destination le PassagerStresse se lève*/
+        p.nouvelArret(faux, 2); 
         assert "arretDemanderDebout".equals(getLastLog(faux)) : "debout";
     }
 }
