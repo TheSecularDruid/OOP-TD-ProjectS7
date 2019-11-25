@@ -1,19 +1,19 @@
 import utils.TestUtils;
 
-public class TestCollecte{
+public static class TestCollecte{
     public static void main() {
 	
     }
-
-    private void TestUneEntree() {
-	
-    }
-
-    private void TestUneSortie() {
+    
+    private void TestUneEntreeTableau() {
 
     }
 
-    private void TestChangerArret() {
+    private void TestUneSortieTableau() {
+
+    }
+
+    private void TestChangerArretTableau() {
 	
     }
 }

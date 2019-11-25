@@ -1,3 +1,4 @@
+package collecte;
 import java.io.*;
 
 public abstract class Collecte{
@@ -33,8 +34,9 @@ public abstract class Collecte{
     public abstract void print_data();
 
     public String toString() {
-	print("Arrêt courant : " + current_stop);
-        print("Nombre de passagers étant pour l'instant montés à cet arrêt : " + current_getting_on);
-        print("Nombre de passagers étant pour l'instant descendus à cet arrêt : " + current_jumping_off);
+	String data = "Arrêt courant : " + current_stop+"\n";
+        data += "Nombre de passagers étant pour l'instant montés à cet arrêt : " + current_getting_on+"\n";
+        data += "Nombre de passagers étant pour l'instant descendus à cet arrêt : " + current_jumping_off+"\n";
+	return data;
     }
 }

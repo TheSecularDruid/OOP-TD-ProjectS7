@@ -34,7 +34,7 @@ public class Autobus extends Vehicule implements Transport {
 	return -1;
     }
 
-    void allerArretSuivant() {
+    public void allerArretSuivant() {
 	num_arret++;
 	for (int i = 0; i < passagers.length; i++) {
 	    if (passagers[i] != null) {
